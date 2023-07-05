@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing"
 )
@@ -17,7 +17,7 @@ func main() {
 	revision := os.Args[2]
 
 	// We instantiate a new repository targeting the given path (the .git folder)
-	r, err := git.PlainOpen(path)
+	r, err := gitpkg.PlainOpen(path)
 	CheckIfError(err)
 
 	// Resolve revision into a sha1 commit, only some revisions are resolved

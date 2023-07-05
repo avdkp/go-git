@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing"
 	"github.com/avdkp/go-git/plumbing/object"
@@ -16,7 +16,7 @@ func main() {
 	path := os.Args[1]
 
 	// We instantiate a new repository targeting the given path (the .git folder)
-	r, err := git.PlainOpen(path)
+	r, err := gitpkg.PlainOpen(path)
 	CheckIfError(err)
 
 	// List all tag references, both lightweight tags and annotated tags

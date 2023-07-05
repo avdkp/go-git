@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 )
 
@@ -18,9 +18,9 @@ func main() {
 	// Clone the given repository to the given directory
 	Info("git clone %s %s --recursive", url, directory)
 
-	r, err := git.PlainClone(directory, false, &git.CloneOptions{
+	r, err := gitpkg.PlainClone(directory, false, &gitpkg.CloneOptions{
 		URL:               url,
-		RecurseSubmodules: git.DefaultSubmoduleRecursionDepth,
+		RecurseSubmodules: gitpkg.DefaultSubmoduleRecursionDepth,
 	})
 
 	CheckIfError(err)
@@ -46,7 +46,7 @@ func main() {
 	}
 
 	Info("git submodule update --remote")
-	err = sw.Pull(&git.PullOptions{
+	err = sw.Pull(&gitpkg.PullOptions{
 		RemoteName: "origin",
 	})
 	if err != nil {

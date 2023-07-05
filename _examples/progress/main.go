@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 )
 
@@ -16,7 +16,7 @@ func main() {
 	// Clone the given repository to the given directory
 	Info("git clone %s %s", url, directory)
 
-	_, err := git.PlainClone(directory, false, &git.CloneOptions{
+	_, err := gitpkg.PlainClone(directory, false, &gitpkg.CloneOptions{
 		URL:   url,
 		Depth: 1,
 

@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/config"
 	"github.com/avdkp/go-git/plumbing"
@@ -20,7 +20,7 @@ import (
 func main() {
 	// Create a new repository
 	Info("git init")
-	r, err := git.Init(memory.NewStorage(), nil)
+	r, err := gitpkg.Init(memory.NewStorage(), nil)
 	CheckIfError(err)
 
 	// Add a new remote, with the default fetch refspec
@@ -44,7 +44,7 @@ func main() {
 
 	// Fetch using the new remote
 	Info("git fetch example")
-	err = r.Fetch(&git.FetchOptions{
+	err = r.Fetch(&gitpkg.FetchOptions{
 		RemoteName: "example",
 	})
 

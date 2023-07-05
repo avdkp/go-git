@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 	"strings"
 
-	"github.com/avdkp/go-git"
 	"github.com/avdkp/go-git/plumbing/object"
 
 	. "github.com/avdkp/go-git/_examples"
@@ -28,7 +28,7 @@ func main() {
 	// and fetching the objects, exactly as:
 	Info("git clone %s %s", url, path)
 
-	r, err := git.PlainClone(path, false, &git.CloneOptions{URL: url})
+	r, err := gitpkg.PlainClone(path, false, &gitpkg.CloneOptions{URL: url})
 	CheckIfError(err)
 
 	// Getting the latest commit on the current branch
@@ -59,7 +59,7 @@ func main() {
 	// List the history of the repository
 	Info("git log --oneline")
 
-	commitIter, err := r.Log(&git.LogOptions{From: commit.Hash})
+	commitIter, err := r.Log(&gitpkg.LogOptions{From: commit.Hash})
 	CheckIfError(err)
 
 	err = commitIter.ForEach(func(c *object.Commit) error {

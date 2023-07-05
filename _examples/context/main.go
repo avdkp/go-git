@@ -2,10 +2,10 @@ package main
 
 import (
 	"context"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 	"os/signal"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 )
 
@@ -36,7 +36,7 @@ func main() {
 
 	// Using PlainCloneContext we can provide to a context, if the context
 	// is cancelled, the clone operation stops gracefully.
-	_, err := git.PlainCloneContext(ctx, directory, false, &git.CloneOptions{
+	_, err := gitpkg.PlainCloneContext(ctx, directory, false, &gitpkg.CloneOptions{
 		URL:      url,
 		Progress: os.Stdout,
 	})

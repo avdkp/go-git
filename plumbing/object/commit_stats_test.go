@@ -68,13 +68,13 @@ func (s *CommitStatsSuite) TestStats_WithoutNewLine(c *C) {
 	c.Assert(fileStats[0].String(), Equals, " foo | 2 +-\n")
 }
 
-func (s *CommitStatsSuite) writeHistory(c *C, files ...[]byte) (*git.Repository, plumbing.Hash) {
-	cm := &git.CommitOptions{
+func (s *CommitStatsSuite) writeHistory(c *C, files ...[]byte) (*gitpkg.Repository, plumbing.Hash) {
+	cm := &gitpkg.CommitOptions{
 		Author: &object.Signature{Name: "Foo", Email: "foo@example.local", When: time.Now()},
 	}
 
 	fs := memfs.New()
-	r, err := git.Init(memory.NewStorage(), fs)
+	r, err := gitpkg.Init(memory.NewStorage(), fs)
 	c.Assert(err, IsNil)
 
 	w, err := r.Worktree()

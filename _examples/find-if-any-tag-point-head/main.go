@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing"
 )
@@ -15,7 +15,7 @@ func main() {
 	path := os.Args[1]
 
 	// We instantiate a new repository targeting the given path (the .git folder)
-	r, err := git.PlainOpen(path)
+	r, err := gitpkg.PlainOpen(path)
 	CheckIfError(err)
 
 	// Get HEAD reference to use for comparison later on.

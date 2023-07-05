@@ -1,11 +1,11 @@
 package packfile_test
 
 import (
+	"github.com/avdkp/go-git/gitpkg"
 	"io"
 	"os"
 	"testing"
 
-	"github.com/avdkp/go-git"
 	"github.com/avdkp/go-git/plumbing"
 	"github.com/avdkp/go-git/plumbing/cache"
 	"github.com/avdkp/go-git/plumbing/format/packfile"
@@ -87,7 +87,7 @@ func (s *ParserSuite) TestThinPack(c *C) {
 	c.Assert(err, IsNil)
 
 	// Initialize an empty repository
-	r, err := git.PlainInit(path, true)
+	r, err := gitpkg.PlainInit(path, true)
 	c.Assert(err, IsNil)
 
 	// Try to parse a thin pack without having the required objects in the repo to
@@ -104,7 +104,7 @@ func (s *ParserSuite) TestThinPack(c *C) {
 	c.Assert(err, IsNil)
 
 	// start over with a clean repo
-	r, err = git.PlainInit(path, true)
+	r, err = gitpkg.PlainInit(path, true)
 	c.Assert(err, IsNil)
 
 	// Now unpack a base packfile into our empty repo:

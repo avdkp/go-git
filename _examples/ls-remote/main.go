@@ -1,10 +1,10 @@
 package main
 
 import (
+	"github.com/avdkp/go-git/gitpkg"
 	"log"
 	"os"
 
-	"github.com/avdkp/go-git"
 	"github.com/avdkp/go-git/config"
 	"github.com/avdkp/go-git/storage/memory"
 
@@ -19,7 +19,7 @@ func main() {
 	Info("git ls-remote --tags %s", url)
 
 	// Create the remote with repository URL
-	rem := git.NewRemote(memory.NewStorage(), &config.RemoteConfig{
+	rem := gitpkg.NewRemote(memory.NewStorage(), &config.RemoteConfig{
 		Name: "origin",
 		URLs: []string{url},
 	})
@@ -27,9 +27,9 @@ func main() {
 	log.Print("Fetching tags...")
 
 	// We can then use every Remote functions to retrieve wanted information
-	refs, err := rem.List(&git.ListOptions{
+	refs, err := rem.List(&gitpkg.ListOptions{
 		// Returns all references, including peeled references.
-		PeelingOption: git.AppendPeeled,
+		PeelingOption: gitpkg.AppendPeeled,
 	})
 	if err != nil {
 		log.Fatal(err)

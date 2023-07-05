@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing/object"
 )
@@ -15,7 +15,7 @@ func main() {
 	path := os.Args[1]
 
 	// We instantiate a new repository targeting the given path (the .git folder)
-	r, err := git.PlainOpen(path)
+	r, err := gitpkg.PlainOpen(path)
 	CheckIfError(err)
 
 	// Length of the HEAD history
@@ -26,7 +26,7 @@ func main() {
 	CheckIfError(err)
 
 	// ... retrieves the commit history
-	cIter, err := r.Log(&git.LogOptions{From: ref.Hash()})
+	cIter, err := r.Log(&gitpkg.LogOptions{From: ref.Hash()})
 	CheckIfError(err)
 
 	// ... just iterates over the commits

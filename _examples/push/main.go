@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 )
 
@@ -13,11 +13,11 @@ func main() {
 	CheckArgs("<repository-path>")
 	path := os.Args[1]
 
-	r, err := git.PlainOpen(path)
+	r, err := gitpkg.PlainOpen(path)
 	CheckIfError(err)
 
 	Info("git push")
 	// push using default options
-	err = r.Push(&git.PushOptions{})
+	err = r.Push(&gitpkg.PushOptions{})
 	CheckIfError(err)
 }

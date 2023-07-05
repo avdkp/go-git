@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	git "github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
+	git "github.com/avdkp/go-git/gitpkg"
 	"github.com/avdkp/go-git/plumbing/transport/http"
 )
 

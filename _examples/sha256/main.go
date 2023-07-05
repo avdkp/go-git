@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 	"path/filepath"
 	"time"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing/format/config"
 	"github.com/avdkp/go-git/plumbing/object"
@@ -23,7 +23,7 @@ func main() {
 	os.RemoveAll(directory)
 
 	// Init a new repository using the ObjectFormat SHA256.
-	r, err := git.PlainInitWithOptions(directory, &git.PlainInitOptions{ObjectFormat: config.SHA256})
+	r, err := gitpkg.PlainInitWithOptions(directory, &gitpkg.PlainInitOptions{ObjectFormat: config.SHA256})
 	CheckIfError(err)
 
 	w, err := r.Worktree()
@@ -46,7 +46,7 @@ func main() {
 	// commit Since version 5.0.1, we can omit the Author signature, being read
 	// from the git config files.
 	Info("git commit -m \"example go-git commit\"")
-	commit, err := w.Commit("example go-git commit", &git.CommitOptions{
+	commit, err := w.Commit("example go-git commit", &gitpkg.CommitOptions{
 		Author: &object.Signature{
 			Name:  "John Doe",
 			Email: "john@doe.org",

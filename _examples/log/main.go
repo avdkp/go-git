@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"time"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing/object"
 	"github.com/avdkp/go-git/storage/memory"
@@ -19,7 +19,7 @@ func main() {
 	// Clones the given repository, creating the remote, the local branches
 	// and fetching the objects, everything in memory:
 	Info("git clone https://github.com/src-d/go-siva")
-	r, err := git.Clone(memory.NewStorage(), nil, &git.CloneOptions{
+	r, err := gitpkg.Clone(memory.NewStorage(), nil, &gitpkg.CloneOptions{
 		URL: "https://github.com/src-d/go-siva",
 	})
 	CheckIfError(err)
@@ -34,7 +34,7 @@ func main() {
 	// ... retrieves the commit history
 	since := time.Date(2019, 1, 1, 0, 0, 0, 0, time.UTC)
 	until := time.Date(2019, 7, 30, 0, 0, 0, 0, time.UTC)
-	cIter, err := r.Log(&git.LogOptions{From: ref.Hash(), Since: &since, Until: &until})
+	cIter, err := r.Log(&gitpkg.LogOptions{From: ref.Hash(), Since: &since, Until: &until})
 	CheckIfError(err)
 
 	// ... just iterates over the commits, printing it

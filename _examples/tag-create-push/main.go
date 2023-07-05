@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"log"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/config"
 	"github.com/avdkp/go-git/plumbing/object"
@@ -42,7 +42,7 @@ func main() {
 	}
 }
 
-func cloneRepo(url, dir, publicKeyPath string) (*git.Repository, error) {
+func cloneRepo(url, dir, publicKeyPath string) (*gitpkg.Repository, error) {
 	log.Printf("cloning %s into %s", url, dir)
 	auth, keyErr := publicKey(publicKeyPath)
 	if keyErr != nil {
@@ -50,7 +50,7 @@ func cloneRepo(url, dir, publicKeyPath string) (*git.Repository, error) {
 	}
 
 	Info("git clone %s", url)
-	r, err := git.PlainClone(dir, false, &git.CloneOptions{
+	r, err := gitpkg.PlainClone(dir, false, &gitpkg.CloneOptions{
 		Progress: os.Stdout,
 		URL:      url,
 		Auth:     auth,
@@ -74,7 +74,7 @@ func publicKey(filePath string) (*ssh.PublicKeys, error) {
 	return publicKey, err
 }
 
-func tagExists(tag string, r *git.Repository) bool {
+func tagExists(tag string, r *gitpkg.Repository) bool {
 	tagFoundErr := "tag was found"
 	Info("git show-ref --tag")
 	tags, err := r.TagObjects()
@@ -97,7 +97,7 @@ func tagExists(tag string, r *git.Repository) bool {
 	return res
 }
 
-func setTag(r *git.Repository, tag string) (bool, error) {
+func setTag(r *gitpkg.Repository, tag string) (bool, error) {
 	if tagExists(tag, r) {
 		log.Printf("tag %s already exists", tag)
 		return false, nil
@@ -109,7 +109,7 @@ func setTag(r *git.Repository, tag string) (bool, error) {
 		return false, err
 	}
 	Info("git tag -a %s %s -m \"%s\"", tag, h.Hash(), tag)
-	_, err = r.CreateTag(tag, h.Hash(), &git.CreateTagOptions{
+	_, err = r.CreateTag(tag, h.Hash(), &gitpkg.CreateTagOptions{
 		Message: tag,
 	})
 
@@ -121,11 +121,11 @@ func setTag(r *git.Repository, tag string) (bool, error) {
 	return true, nil
 }
 
-func pushTags(r *git.Repository, publicKeyPath string) error {
+func pushTags(r *gitpkg.Repository, publicKeyPath string) error {
 
 	auth, _ := publicKey(publicKeyPath)
 
-	po := &git.PushOptions{
+	po := &gitpkg.PushOptions{
 		RemoteName: "origin",
 		Progress:   os.Stdout,
 		RefSpecs:   []config.RefSpec{config.RefSpec("refs/tags/*:refs/tags/*")},
@@ -135,7 +135,7 @@ func pushTags(r *git.Repository, publicKeyPath string) error {
 	err := r.Push(po)
 
 	if err != nil {
-		if err == git.NoErrAlreadyUpToDate {
+		if err == gitpkg.NoErrAlreadyUpToDate {
 			log.Print("origin remote was up to date, no push done")
 			return nil
 		}

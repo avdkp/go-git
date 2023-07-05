@@ -3,11 +3,11 @@ package main
 import (
 	"crypto/tls"
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"net/http"
 	"os"
 	"time"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing/transport/client"
 	githttp "github.com/avdkp/go-git/plumbing/transport/http"
@@ -41,7 +41,7 @@ func main() {
 	// Clone repository using the new client if the protocol is https://
 	Info("git clone %s", url)
 
-	r, err := git.Clone(memory.NewStorage(), nil, &git.CloneOptions{URL: url})
+	r, err := gitpkg.Clone(memory.NewStorage(), nil, &gitpkg.CloneOptions{URL: url})
 	CheckIfError(err)
 
 	// Retrieve the branch pointed by HEAD

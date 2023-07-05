@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing"
 )
@@ -16,7 +16,7 @@ func main() {
 
 	// Clone the given repository to the given directory
 	Info("git clone %s %s", url, directory)
-	r, err := git.PlainClone(directory, false, &git.CloneOptions{
+	r, err := gitpkg.PlainClone(directory, false, &gitpkg.CloneOptions{
 		URL: url,
 	})
 
@@ -33,7 +33,7 @@ func main() {
 
 	// ... checking out to commit
 	Info("git checkout %s", commit)
-	err = w.Checkout(&git.CheckoutOptions{
+	err = w.Checkout(&gitpkg.CheckoutOptions{
 		Hash: plumbing.NewHash(commit),
 	})
 	CheckIfError(err)

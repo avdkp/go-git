@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"io"
 	"os"
 	"path"
 	"strings"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing"
 	"github.com/avdkp/go-git/plumbing/cache"
@@ -31,13 +31,13 @@ func main() {
 
 	// We instantiate a new repository targeting the given path (the .git folder)
 	fs := osfs.New(path)
-	if _, err := fs.Stat(git.GitDirName); err == nil {
-		fs, err = fs.Chroot(git.GitDirName)
+	if _, err := fs.Stat(gitpkg.GitDirName); err == nil {
+		fs, err = fs.Chroot(gitpkg.GitDirName)
 		CheckIfError(err)
 	}
 
 	s := filesystem.NewStorageWithOptions(fs, cache.NewObjectLRUDefault(), filesystem.Options{KeepDescriptors: true})
-	r, err := git.Open(s, fs)
+	r, err := gitpkg.Open(s, fs)
 	CheckIfError(err)
 	defer s.Close()
 
@@ -81,7 +81,7 @@ func main() {
 	}
 }
 
-func getCommitNodeIndex(r *git.Repository, fs billy.Filesystem) (commitgraph.CommitNodeIndex, io.ReadCloser) {
+func getCommitNodeIndex(r *gitpkg.Repository, fs billy.Filesystem) (commitgraph.CommitNodeIndex, io.ReadCloser) {
 	file, err := fs.Open(path.Join("objects", "info", "commit-graph"))
 	if err == nil {
 		index, err := commitgraph_fmt.OpenFileIndex(file)

@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 
-	"github.com/avdkp/go-git"
 	"github.com/avdkp/go-git/plumbing"
 	"github.com/avdkp/go-git/plumbing/object"
 )
@@ -78,7 +78,7 @@ func main() {
 	}
 
 	// Open a git repository from current directory
-	repo, err := git.PlainOpen(path)
+	repo, err := gitpkg.PlainOpen(path)
 	checkIfError(err, exitCodeCouldNotOpenRepository, "not in a git repository")
 
 	// Get the hashes of the passed revisions

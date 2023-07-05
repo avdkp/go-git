@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/gitpkg"
 	"os"
 	"path/filepath"
 	"time"
 
-	"github.com/avdkp/go-git"
 	. "github.com/avdkp/go-git/_examples"
 	"github.com/avdkp/go-git/plumbing/object"
 )
@@ -18,7 +18,7 @@ func main() {
 	directory := os.Args[1]
 
 	// Opens an already existing repository.
-	r, err := git.PlainOpen(directory)
+	r, err := gitpkg.PlainOpen(directory)
 	CheckIfError(err)
 
 	w, err := r.Worktree()
@@ -48,7 +48,7 @@ func main() {
 	// commit Since version 5.0.1, we can omit the Author signature, being read
 	// from the git config files.
 	Info("git commit -m \"example go-git commit\"")
-	commit, err := w.Commit("example go-git commit", &git.CommitOptions{
+	commit, err := w.Commit("example go-git commit", &gitpkg.CommitOptions{
 		Author: &object.Signature{
 			Name:  "John Doe",
 			Email: "john@doe.org",
