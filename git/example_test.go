@@ -2,12 +2,12 @@ package git_test
 
 import (
 	"fmt"
+	"github.com/avdkp/go-git/git"
 	"io"
 	"log"
 	"os"
 	"path/filepath"
 
-	"github.com/avdkp/go-git"
 	"github.com/avdkp/go-git/config"
 	"github.com/avdkp/go-git/plumbing"
 	"github.com/avdkp/go-git/plumbing/transport/http"
