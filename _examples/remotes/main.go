@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/avdkp/go-git"
-	. "github.com/avdkp/go-git/_examples"
-	"github.com/avdkp/go-git/config"
-	"github.com/avdkp/go-git/plumbing"
-	"github.com/avdkp/go-git/storage/memory"
+	"github.com/avdkp/go-git/src"
+	. "github.com/avdkp/go-git/src/_examples"
+	"github.com/avdkp/go-git/src/config"
+	"github.com/avdkp/go-git/src/plumbing"
+	"github.com/avdkp/go-git/src/storage/memory"
 )
 
 // Example of how to:

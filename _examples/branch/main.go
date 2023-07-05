@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	"github.com/avdkp/go-git"
-	. "github.com/avdkp/go-git/_examples"
-	"github.com/avdkp/go-git/plumbing"
+	"github.com/avdkp/go-git/src"
+	. "github.com/avdkp/go-git/src/_examples"
+	"github.com/avdkp/go-git/src/plumbing"
 )
 
 // An example of how to create and remove branches or any other kind of reference.

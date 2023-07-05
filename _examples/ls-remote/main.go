@@ -4,11 +4,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/avdkp/go-git"
-	"github.com/avdkp/go-git/config"
-	"github.com/avdkp/go-git/storage/memory"
+	"github.com/avdkp/go-git/src"
+	"github.com/avdkp/go-git/src/config"
+	"github.com/avdkp/go-git/src/storage/memory"
 
-	. "github.com/avdkp/go-git/_examples"
+	. "github.com/avdkp/go-git/src/_examples"
 )
 
 // Retrieve remote tags without cloning repository

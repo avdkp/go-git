@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/avdkp/go-git"
-	. "github.com/avdkp/go-git/_examples"
-	"github.com/avdkp/go-git/plumbing"
+	"github.com/avdkp/go-git/src"
+	. "github.com/avdkp/go-git/src/_examples"
+	"github.com/avdkp/go-git/src/plumbing"
 )
 
 // Basic example of how to checkout a specific commit.

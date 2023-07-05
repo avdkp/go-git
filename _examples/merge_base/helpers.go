@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/avdkp/go-git/plumbing/object"
+	"github.com/avdkp/go-git/src/plumbing/object"
 )
 
 func checkIfError(err error, code exitCode, mainReason string, v ...interface{}) {

@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"os"
 
-	git "github.com/avdkp/go-git"
-	. "github.com/avdkp/go-git/_examples"
-	"github.com/avdkp/go-git/plumbing/protocol/packp/capability"
-	"github.com/avdkp/go-git/plumbing/transport"
-	"github.com/avdkp/go-git/plumbing/transport/http"
+	git "github.com/avdkp/go-git/src"
+	. "github.com/avdkp/go-git/src/_examples"
+	"github.com/avdkp/go-git/src/plumbing/protocol/packp/capability"
+	"github.com/avdkp/go-git/src/plumbing/transport"
+	"github.com/avdkp/go-git/src/plumbing/transport/http"
 )
 
 func main() {

@@ -5,11 +5,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/avdkp/go-git"
-	. "github.com/avdkp/go-git/_examples"
-	"github.com/avdkp/go-git/config"
-	"github.com/avdkp/go-git/plumbing/object"
-	"github.com/avdkp/go-git/plumbing/transport/ssh"
+	"github.com/avdkp/go-git/src"
+	. "github.com/avdkp/go-git/src/_examples"
+	"github.com/avdkp/go-git/src/config"
+	"github.com/avdkp/go-git/src/plumbing/object"
+	"github.com/avdkp/go-git/src/plumbing/transport/ssh"
 )
 
 // Example of how create a tag and push it to a remote.
